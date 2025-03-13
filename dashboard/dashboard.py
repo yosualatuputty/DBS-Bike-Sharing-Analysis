@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from io import BytesIO
+
 
 st.set_page_config(layout="wide")
 
@@ -67,7 +69,10 @@ with tab2:
     ax.set_xlabel("Suhu")
     ax.set_ylabel("Total Jumlah Penyewaan Sepeda")
     ax.grid()
-    st.pyplot(fig)
+    # st.pyplot(fig)
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    st.image(buf)
 
     st.write("Tes korelasi menunjukkan bahwa suhu memiliki korelasi yang cukup kuat dengan jumlah penyewaan sepeda per-harinya.")
     st.write("""**Insight:**
@@ -85,7 +90,10 @@ with tab3:
     ax.set_title("Tren Penyewaan Sepeda per Tahun")
     ax.set_xlabel("Tahun")
     ax.set_ylabel("Total Penyewaan")
-    st.pyplot(fig)
+    # st.pyplot(fig)
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    st.image(buf)
 
     # 📆 **Monthly Trend**
     monthly_trend = df_hour.groupby(['yr', 'mnth'])['cnt'].mean().reset_index()
@@ -97,7 +105,10 @@ with tab3:
     ax.set_ylabel("Rata-rata Penyewaan")
     ax.legend(title="Tahun")
     ax.grid()
-    st.pyplot(fig)
+    # st.pyplot(fig)
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    st.image(buf)
 
     st.write("""Visualisasi data penyewaan sepeda per jam menunjukkan adanya pola dimana:
 - Penyewaan sepeda lebih rendah di bulan Januari dan Desember.
@@ -121,7 +132,10 @@ with tab4:
     ax.set_xlabel("Jam")
     ax.set_ylabel("Rata-rata Jumlah Penyewaan")
     ax.grid()
-    st.pyplot(fig)
+    # st.pyplot(fig)
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    st.image(buf)
 
     st.write("""Visualisasi tren per jam menunjukkan adanya pola dimana:
 - Penyewaan sangat rendah antara jam 00:00 - 05:00, dengan titik terendah sekitar jam 04:00 dengan 6.35 penyewaan.
@@ -150,7 +164,10 @@ with tab5:
     ax.set_xticks(range(0, 4), ['Musim Semi', 'Musim Panas', 'Musim Gugur', 'Musim Dingin'])
     ax.set_ylabel('Rata-rata Penyewaan Sepeda')
     ax.set_title('Tren Penyewaan Sepeda Berdasarkan Musim')
-    st.pyplot(fig)
+    # st.pyplot(fig)
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    st.image(buf)
 
     st.write("""Dari hasil binning, diketahui bahwa musim semi memiliki jumlah paling sedikit penyewaan sepeda, sedangkan jumlah penyewaan tertinggi ada pada musim gugur.""")
 
