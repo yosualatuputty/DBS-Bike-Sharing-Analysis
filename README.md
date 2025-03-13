@@ -24,5 +24,5 @@ streamlit run dashboard/dashboard.py
 
 ## Streamlit Dashboard
 ```
-https://bike-sharing-data-analysis-jyhsgvxoqtdhazconrtcov.streamlit.app/
+https://dbs-bike-sharing-analysis-bnhifczuutuf7hbn7pxfed.streamlit.app
 ```
